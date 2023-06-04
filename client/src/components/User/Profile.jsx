@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import profile from '../../assets/image/no-profile-picture-15257.png'
+import profile from '../../assets/image/Sample_User_Icon.png'
 import { useSelector } from 'react-redux';
 import { UserPasswordUpdateWithLoginRequest, UserProfileDetailRequest, UserUpdateRequest } from '../../APIRequest/UserAPIRequest';
 import { ErrorToast, IsEmpty } from '../../helpers/FormHelper';

@@ -17,11 +17,11 @@ function App() {
           <Route path='/Login' element={<LoginPage></LoginPage>}></Route>
           <Route path='/Registration' element={<RegistrationPage></RegistrationPage>}></Route>
 
-          <Route path='/Dashboard' element={<ProtectedRoute></ProtectedRoute>}>
-            <Route path='' element={<DashboardPage></DashboardPage>}></Route>
-            <Route path='Profile' element={<ProfilePage></ProfilePage>}></Route>
+          <Route element={<ProtectedRoute></ProtectedRoute>}>
+            <Route path='/Dashboard' element={<DashboardPage></DashboardPage>}></Route>
+            <Route path='/Profile' element={<ProfilePage></ProfilePage>}></Route>
           </Route>
-          
+
           <Route path='*' element={<NotFoundPage></NotFoundPage>}></Route>
         </Routes>
       </BrowserRouter>

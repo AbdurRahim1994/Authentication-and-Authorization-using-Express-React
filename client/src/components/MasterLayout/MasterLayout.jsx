@@ -2,12 +2,11 @@ import React, { useRef } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import profile from '../../assets/image/no-profile-picture-15257.png'
+import profile from '../../assets/image/Sample_User_Icon.png'
+import authentication from '../../assets/image/authenticate.png'
 import { NavLink } from 'react-router-dom'
 import { RemoveSession, GetUserDetail } from '../../helpers/SessionHelper'
-import { AiOutlineLogout, AiOutlineUser, AiOutlineMenu, AiFillDashboard, AiOutlineEdit, AiOutlineCheckCircle } from 'react-icons/ai'
-import { BsListNested, BsHourglass } from 'react-icons/bs'
-import { MdOutlineCancelPresentation } from 'react-icons/md'
+import { AiOutlineLogout, AiOutlineUser, AiOutlineMenu, AiFillDashboard } from 'react-icons/ai'
 import { LogoutAlert } from '../../helpers/LogoutAlert';
 import { SuccessToast } from '../../helpers/FormHelper'
 
@@ -54,7 +53,7 @@ const MasterLayout = (props) => {
                         </div>
                     </Navbar.Brand>
 
-                    <div className='float-right h-auto d-flex'>
+                    <div className='float-right h-auto d-flex align-items-center'>
                         <div className='user-dropdown'>
                             <img src={profile} className='icon-nav-img icon-nav' alt='logo'></img>
                             <div className='user-dropdown-content'>
@@ -62,12 +61,10 @@ const MasterLayout = (props) => {
                                     <img src={profile} alt='logo' className='icon-nav-img'></img>
                                     <h6>{GetUserDetail()?.name}</h6>
                                     <hr className='user-dropdown-divider p-0'></hr>
-                                    <Nav.Link>
-                                        <NavLink to='/Profile' className='side-bar-item'>
-                                            <AiOutlineUser className='side-bar-item-icon'></AiOutlineUser>
-                                            <span className='side-bar-item-caption'>Profile</span>
-                                        </NavLink>
-                                    </Nav.Link>
+                                    <NavLink to='/Dashboard/Profile' className='side-bar-item'>
+                                        <AiOutlineUser className='side-bar-item-icon'></AiOutlineUser>
+                                        <span className='side-bar-item-caption'>Profile</span>
+                                    </NavLink>
                                     <a className='side-bar-item'>
                                         <AiOutlineLogout className='side-bar-item-icon'></AiOutlineLogout>
                                         <span onClick={Logout} className='side-bar-item-caption'>Logout</span>
@@ -81,7 +78,7 @@ const MasterLayout = (props) => {
 
             <div ref={(div) => sideNavRef = div} className='side-nav-open'>
                 <NavLink to='/' className='d-flex justify-content-center sticky-top bg-white'>
-                    <img src={profile} className='icon-nav-img-lg mt-3'></img>
+                    <img src={authentication} className='icon-nav-img-lg mt-3'></img>
                 </NavLink>
 
                 <NavLink to='/Dashboard' className={(navData) => navData.isActive ? "side-bar-item-active side-bar-item mt-2" : "side-bar-item mt-2"}>
@@ -89,19 +86,15 @@ const MasterLayout = (props) => {
                     <span className='side-bar-item-caption'>Dashboard</span>
                 </NavLink>
 
-                <Nav.Link>
-                    <NavLink to='/Dashboard/Profile' className={(navData) => navData.isActive ? "side-bar-item-active side-bar-item mt-2" : "side-bar-item mt-2"}>
-                        <AiOutlineUser className='side-bar-item-icon'></AiOutlineUser>
-                        <span className='side-bar-item-caption'>Profile</span>
-                    </NavLink>
-                </Nav.Link>
+                <NavLink to='/Profile' className={(navData) => navData.isActive ? "side-bar-item-active side-bar-item mt-2" : "side-bar-item mt-2"}>
+                    <AiOutlineUser className='side-bar-item-icon'></AiOutlineUser>
+                    <span className='side-bar-item-caption'>Profile</span>
+                </NavLink>
 
-                <Nav.Link>
-                    <NavLink onClick={Logout} className={(navData) => navData.isActive ? "side-bar-item-active side-bar-item mt-2" : "side-bar-item mt-2"}>
-                        <AiOutlineLogout className='side-bar-item-icon'></AiOutlineLogout>
-                        <span className='side-bar-item-caption'>Logout</span>
-                    </NavLink>
-                </Nav.Link>
+                <a className='side-bar-item'>
+                    <AiOutlineLogout className='side-bar-item-icon'></AiOutlineLogout>
+                    <span onClick={Logout} className='side-bar-item-caption'>Logout</span>
+                </a>
             </div>
 
             <div ref={(div) => contentRef = div} className='content'>
