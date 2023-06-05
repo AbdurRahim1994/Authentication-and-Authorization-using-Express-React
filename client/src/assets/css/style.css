@@ -61,6 +61,18 @@ td div {
     display: block;
 }
 
+.home-paragraph {
+    font-size: 50px;
+    color: black;
+}
+
+.home-span {
+    border: 3px solid #00A884;
+    border-radius: 5px;
+    padding: 10px;
+    color: #00A884
+}
+
 @import 'dropdown.css';
 @import 'progress.css';
 @import 'sidebar.css';
